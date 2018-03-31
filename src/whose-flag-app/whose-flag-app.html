@@ -58,13 +58,15 @@
         <div main-title>Whose flag is this?</div>
       </app-toolbar>
     </app-header>
+    <iron-ajax url="data/countrycodes.json" handle-as="json" on-response="_handleResponse" auto></iron-ajax>
+
     <div id="flag-image-container">
-      <iron-image id="flag-image" preload fade src="data/svg/BR.svg">
+      <iron-image id="flag-image" preload fade src="data/svg/[[correctAnswer.code]].svg">
       </iron-image>
     </div>
     <div id="answer-button-container">
-      <paper-button id="optionA" class="answer" on-click="_selectAnswer">[[countryA]]</paper-button>
-      <paper-button id="optionB" class="answer" on-click="_selectAnswer">[[countryB]]</paper-button>
+      <paper-button id="optionA" class="answer" on-click="_selectAnswer">[[countryA.name]]</paper-button>
+      <paper-button id="optionB" class="answer" on-click="_selectAnswer">[[countryB.name]]</paper-button>
     </div>
     <p>[[outputMessage]]</p>
     <paper-button id="another" class="another">Another!</paper-button>
@@ -80,24 +82,23 @@
       static get properties() {
         return {
           countryA: {
-            type: String,
-            value: "Brazil"
+            type: Object
           },
           countryB: {
-            type: String,
-            value: "Uruguay"
+            type: Object
           },
           outputMessage: {
             type: String,
             value: ""
           },
           correctAnswer: {
-            type: String,
-            value: "Brazil"
+            type: Object
           },
           userAnswer: {
-            type: String,
-            value: "Brazil"
+            type: String
+          },
+          countryList: {
+            type: Array // should be array
           }
         };
       }
@@ -105,11 +106,18 @@
       _selectAnswer(event){
         let clickedButton = event.target;
         this.userAnswer = clickedButton.textContent;
-        if (this.userAnswer == this.correctAnswer) {
+        if (this.userAnswer == this.correctAnswer.name) {
           this.outputMessage = `${this.userAnswer} is correct!`;
         } else {
-          this.outputMessage = `Nope! The correct answer is ${this.correctAnswer} !`;
+          this.outputMessage = `Nope! The correct answer is ${this.correctAnswer.name} !`;
         }
+      }
+      _handleResponse(event){
+        this.countryList = event.detail.response.countrycodes; // should be an array
+        console.log(this.countryList);
+        this.countryA = this.countryList[0];
+        this.countryB = this.countryList[1];
+        this.correctAnswer = this.countryA;
       }
     }
 
