@@ -1,5 +1,7 @@
 # google codelab example - whose-flag-app
 
+[codelab](https://codelabs.developers.google.com/codelabs/whose-flag)
+
 see different branches for completion.
 
 ## step 10 deploy to firebase
