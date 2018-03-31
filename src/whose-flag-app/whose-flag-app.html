@@ -39,7 +39,6 @@
         border: solid;
         width: 100%;
         --iron-image-width: 100%;
-         background-color: white;
       }
       #flag-image-container {
         max-width: 600px;
@@ -61,7 +60,7 @@
     <iron-ajax url="data/countrycodes.json" handle-as="json" on-response="_handleResponse" auto></iron-ajax>
 
     <div id="flag-image-container">
-      <iron-image id="flag-image" preload fade src="data/svg/[[correctAnswer.code]].svg">
+      <iron-image id="flag-image" style="height: 300px; background-color: lightgray;" sizing="contain" preload fade src="data/svg/[[correctAnswer.code]].svg">
       </iron-image>
     </div>
     <div id="answer-button-container">
