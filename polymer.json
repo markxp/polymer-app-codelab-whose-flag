@@ -6,6 +6,7 @@
   },
   "sources": [
     "data/*",
-    "data/svg/*"
+    "data/svg/*",
+    "src/**/*"
   ]
 }
