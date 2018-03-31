@@ -115,9 +115,13 @@
       _handleResponse(event){
         this.countryList = event.detail.response.countrycodes; // should be an array
         console.log(this.countryList);
-        this.countryA = this.countryList[0];
-        this.countryB = this.countryList[1];
+        this.countryA = this.countryList[this.__getRandomCountry()];
+        this.countryB = this.countryList[this.__getRandomCountry()];
         this.correctAnswer = this.countryA;
+      }
+
+      __getRandomCountry(){
+        return Math.floor(Math.random() * (this.countryList.length));
       }
     }
 
