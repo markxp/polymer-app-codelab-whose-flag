@@ -69,7 +69,7 @@
       <paper-button id="optionB" class="answer" on-click="_selectAnswer">[[countryB.name]]</paper-button>
     </div>
     <p>[[outputMessage]]</p>
-    <paper-button id="another" class="another">Another!</paper-button>
+    <paper-button id="another" class="another" on-click="_restart">Another!</paper-button>
   </template>
 
   <script>
@@ -114,7 +114,6 @@
       }
       _handleResponse(event){
         this.countryList = event.detail.response.countrycodes; // should be an array
-        console.log(this.countryList);
         while(!this.countryA || !this.countryB || (this.countryA.code === this.countryB.code)){
           this.countryA = this.countryList[this.__getRandomCountry()];
           this.countryB = this.countryList[this.__getRandomCountry()];
@@ -128,7 +127,10 @@
       __getRandomCountry(){
         return Math.floor(Math.random() * (this.countryList.length));
       }
-      
+
+      _restart(){
+        window.location.reload();
+      }
     }
 
     window.customElements.define(WhoseFlagApp.is, WhoseFlagApp);
