@@ -1,0 +1,7 @@
+{
+  "name": "whose-flag",
+  "short_name": "whose-flag",
+  "description": "google codelab: build and deploy a polymer 2 app from scratch",
+  "start_url": "/",
+  "display": "standalone"
+}

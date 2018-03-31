@@ -1,0 +1,12 @@
+{
+  "name": "whose-flag",
+  "description": "google codelab: build and deploy a polymer 2 app from scratch",
+  "main": "index.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^2.0.0"
+  },
+  "devDependencies": {
+    "web-component-tester": "Polymer/web-component-tester#^6.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"
+  }
+}
